@@ -12,14 +12,13 @@ public class Character_Movement : MonoBehaviour
     [SerializeField] private Rigidbody _Character_Rigidbody;
     [SerializeField] private BoxCollider _BoxCollider;
 
-    [SerializeField] private float _jumpForce = 10;
+
     [SerializeField] private float _walkSpeed = 5;
     [SerializeField] private float _runSpeed = 10;
+    [SerializeField] private float _jumpForce = 10;
     [SerializeField] private float _verticatRotation;
     [SerializeField] private float _sensitivity;
-    [SerializeField] private float _jump_Cooldown;
     [SerializeField] private bool  _isGrounded = true;
-    [SerializeField] private bool  _isSprinting = false;
 
     private Vector3 _moveDirection;
     private CharacterController _controller;
@@ -34,6 +33,7 @@ public class Character_Movement : MonoBehaviour
     {
         PlayerMovementInput = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
         PlayerMouseInput = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+
         applyMovement();
         applyCameraMovment();
     }
@@ -42,7 +42,6 @@ public class Character_Movement : MonoBehaviour
         Vector3 MoveVector = transform.TransformDirection(PlayerMovementInput) * _walkSpeed;
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            Debug.Log("Test");
             MoveVector = transform.TransformDirection(PlayerMovementInput) * _runSpeed;
         }
 
@@ -67,6 +66,5 @@ public class Character_Movement : MonoBehaviour
         }
         
     }
-
     private void OnTriggerEnter(Collider other) => _isGrounded = true;
 }

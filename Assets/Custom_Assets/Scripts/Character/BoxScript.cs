@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class Character_Controller : MonoBehaviour
+public class BoxScript : MonoBehaviour, IIsDamagable
 {
-    private GameObject _playerCharacter;
+    public void takeDamage()
+    {
+        Destroy(this.gameObject);
+    }
 
+    // Start is called before the first frame update
     void Start()
     {
-        _playerCharacter = this.gameObject;
+        
     }
 
     // Update is called once per frame
