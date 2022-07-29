@@ -5,66 +5,82 @@ using UnityEngine;
 
 public class Character_Movement : MonoBehaviour
 {
-    private Vector3 PlayerMovementInput;
-    private Vector2 PlayerMouseInput;
-
-    [SerializeField] private Transform _PlayerCamera;
-    [SerializeField] private Rigidbody _Character_Rigidbody;
-    [SerializeField] private BoxCollider _BoxCollider;
+    public event Action _on_Start_Moving;
+    public event Action _on_Stop_Moving;
 
 
-    [SerializeField] private float _walkSpeed = 5;
-    [SerializeField] private float _runSpeed = 10;
-    [SerializeField] private float _jumpForce = 10;
-    [SerializeField] private float _verticatRotation;
-    [SerializeField] private float _sensitivity;
-    [SerializeField] private bool  _isGrounded = true;
+    [Header("Movement")]
+    [SerializeField] float _movementMultiplier = 30.0f;
+    [SerializeField] private Input_Manager _InputManager;
+    private Rigidbody _Rigidbody = null;
+    
+    public Vector2 _MoveInput { get; private set; } = Vector2.zero;
+    Vector3 _playerMoveInput = Vector3.zero;
 
-    private Vector3 _moveDirection;
-    private CharacterController _controller;
+    [Header("Camera")]
+    [SerializeField] private Transform _CameraFollow;
+    [SerializeField] private float _CameraClampX = -40.0f;
+    [SerializeField] private float _CameraClampY = 40.0f;
 
-    void Start()
+    [SerializeField] private float _playerLookInputLerpTime = 0.35f;
+    [SerializeField] private float _rotationSpeedMultiplier = 180.0f;
+    [SerializeField] private float _PitchSpeedMultiplier = 180.0f;
+    
+    private Vector3 _PlayerLookInput = Vector3.zero;
+    private Vector3 _previousPlayerLookInput = Vector3.zero;
+    [SerializeField] float _cameraPitch = 0.0f;
+    
+    private void Awake()
     {
-        _Character_Rigidbody = this.GetComponent<Rigidbody>();
+        _Rigidbody = GetComponent<Rigidbody>();   
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        PlayerMovementInput = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
-        PlayerMouseInput = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+        _PlayerLookInput = GetLookInput();
+        PlayerLook();
+        PitchCamera();
 
-        applyMovement();
-        applyCameraMovment();
-    }
-    private void applyMovement()
-    {
-        Vector3 MoveVector = transform.TransformDirection(PlayerMovementInput) * _walkSpeed;
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            MoveVector = transform.TransformDirection(PlayerMovementInput) * _runSpeed;
-        }
+        _playerMoveInput = GetMoveInput();
+        PlayerMove();
 
-        _Character_Rigidbody.velocity = new Vector3(MoveVector.x, _Character_Rigidbody.velocity.y, MoveVector.z);
-
-        if(Input.GetKeyDown(KeyCode.Space) && _isGrounded == true)
-        {
-            _isGrounded = false;
-            _Character_Rigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
-        }
+        _Rigidbody.AddRelativeForce(_playerMoveInput, ForceMode.Force);
     }
 
-    private void applyCameraMovment()
+    private Vector3 GetMoveInput()
     {
-        _verticatRotation -= PlayerMouseInput.y * _sensitivity;
+        return new Vector3(_InputManager._MoveInput.x, 0.0f, _InputManager._MoveInput.y);
+        if (_playerMoveInput != Vector3.zero) _on_Start_Moving?.Invoke(); else _on_Stop_Moving?.Invoke();
 
-        transform.Rotate(0f, PlayerMouseInput.x * _sensitivity, 0f);
-
-        if(_verticatRotation < 20 && _verticatRotation > -20)
-        {
-            _PlayerCamera.transform.localRotation = Quaternion.Euler(_verticatRotation, 0f, 0f);
-        }
-        
     }
-    private void OnTriggerEnter(Collider other) => _isGrounded = true;
+
+    private void PlayerMove()
+    {
+        _playerMoveInput = (new Vector3(_playerMoveInput.x * _movementMultiplier * _Rigidbody.mass, _playerMoveInput.y, _playerMoveInput.z * _movementMultiplier * _Rigidbody.mass));
+    }
+
+    private Vector3 GetLookInput()
+    {
+        _previousPlayerLookInput = _PlayerLookInput;
+        _PlayerLookInput = new Vector3(_InputManager._LookInput.x, (_InputManager.InvertMouseY ? -_InputManager._LookInput.y : _InputManager._LookInput.y), 0.0f);
+        return Vector3.Lerp(_previousPlayerLookInput, _PlayerLookInput * Time.deltaTime, _playerLookInputLerpTime);
+    }
+    private void PlayerLook()
+    {
+        _Rigidbody.rotation = Quaternion.Euler(0.0f, _Rigidbody.rotation.eulerAngles.y + (_PlayerLookInput.x * _rotationSpeedMultiplier), 0.0f);
+    }
+    private void PitchCamera()
+    {
+        _cameraPitch += _PlayerLookInput.y * _PitchSpeedMultiplier;
+        _cameraPitch = Mathf.Clamp(_cameraPitch, _CameraClampX, _CameraClampY);
+
+        _CameraFollow.rotation = Quaternion.Euler(_cameraPitch, _CameraFollow.rotation.eulerAngles.y, _CameraFollow.rotation.eulerAngles.z);
+    }
+
+    private void Start()
+    {
+        _cameraPitch = 0.0f;
+    }
+
+
 }
