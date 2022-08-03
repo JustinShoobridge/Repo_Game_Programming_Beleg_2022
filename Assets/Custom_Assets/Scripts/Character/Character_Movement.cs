@@ -10,7 +10,7 @@ public class Character_Movement : MonoBehaviour
 
 
     [Header("Movement")]
-    [SerializeField] float _movementMultiplier = 30.0f;
+    [SerializeField] float _movementMultiplier = 50.0f;
     [SerializeField] private Input_Manager _InputManager;
     private Rigidbody _Rigidbody = null;
     

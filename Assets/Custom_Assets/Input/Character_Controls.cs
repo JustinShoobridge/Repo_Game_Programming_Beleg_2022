@@ -71,6 +71,15 @@ public partial class @Character_Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Reload"",
+                    ""type"": ""Button"",
+                    ""id"": ""37375c7a-e318-4346-b796-aec80d568eb7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -183,6 +192,17 @@ public partial class @Character_Controls : IInputActionCollection2, IDisposable
                     ""action"": ""Sprint"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1ac8dbde-528b-4f6c-b12f-67ccd82eae3f"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": ""Tap"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -196,6 +216,7 @@ public partial class @Character_Controls : IInputActionCollection2, IDisposable
         m_NormalMovement_Jump1 = m_NormalMovement.FindAction("Jump1", throwIfNotFound: true);
         m_NormalMovement_Mouse_Actions = m_NormalMovement.FindAction("Mouse_Actions", throwIfNotFound: true);
         m_NormalMovement_Sprint = m_NormalMovement.FindAction("Sprint", throwIfNotFound: true);
+        m_NormalMovement_Reload = m_NormalMovement.FindAction("Reload", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -260,6 +281,7 @@ public partial class @Character_Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_NormalMovement_Jump1;
     private readonly InputAction m_NormalMovement_Mouse_Actions;
     private readonly InputAction m_NormalMovement_Sprint;
+    private readonly InputAction m_NormalMovement_Reload;
     public struct NormalMovementActions
     {
         private @Character_Controls m_Wrapper;
@@ -269,6 +291,7 @@ public partial class @Character_Controls : IInputActionCollection2, IDisposable
         public InputAction @Jump1 => m_Wrapper.m_NormalMovement_Jump1;
         public InputAction @Mouse_Actions => m_Wrapper.m_NormalMovement_Mouse_Actions;
         public InputAction @Sprint => m_Wrapper.m_NormalMovement_Sprint;
+        public InputAction @Reload => m_Wrapper.m_NormalMovement_Reload;
         public InputActionMap Get() { return m_Wrapper.m_NormalMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -293,6 +316,9 @@ public partial class @Character_Controls : IInputActionCollection2, IDisposable
                 @Sprint.started -= m_Wrapper.m_NormalMovementActionsCallbackInterface.OnSprint;
                 @Sprint.performed -= m_Wrapper.m_NormalMovementActionsCallbackInterface.OnSprint;
                 @Sprint.canceled -= m_Wrapper.m_NormalMovementActionsCallbackInterface.OnSprint;
+                @Reload.started -= m_Wrapper.m_NormalMovementActionsCallbackInterface.OnReload;
+                @Reload.performed -= m_Wrapper.m_NormalMovementActionsCallbackInterface.OnReload;
+                @Reload.canceled -= m_Wrapper.m_NormalMovementActionsCallbackInterface.OnReload;
             }
             m_Wrapper.m_NormalMovementActionsCallbackInterface = instance;
             if (instance != null)
@@ -312,6 +338,9 @@ public partial class @Character_Controls : IInputActionCollection2, IDisposable
                 @Sprint.started += instance.OnSprint;
                 @Sprint.performed += instance.OnSprint;
                 @Sprint.canceled += instance.OnSprint;
+                @Reload.started += instance.OnReload;
+                @Reload.performed += instance.OnReload;
+                @Reload.canceled += instance.OnReload;
             }
         }
     }
@@ -323,5 +352,6 @@ public partial class @Character_Controls : IInputActionCollection2, IDisposable
         void OnJump1(InputAction.CallbackContext context);
         void OnMouse_Actions(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
+        void OnReload(InputAction.CallbackContext context);
     }
 }

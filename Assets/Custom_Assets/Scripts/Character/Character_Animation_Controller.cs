@@ -22,12 +22,18 @@ public class Character_Animation_Controller : MonoBehaviour
         _Character_Controls.NormalMovement.Move.canceled += movementStopped;
         _Character_Controls.NormalMovement.Sprint.started += sprintStarted;
         _Character_Controls.NormalMovement.Sprint.canceled += sprintStopped;
+
+        _Character_Controls.NormalMovement.Mouse_Actions.started += startedShooting;
+        _Character_Controls.NormalMovement.Mouse_Actions.canceled += stoppedShooting;
     }
 
-    public void movmentStarted(InputAction.CallbackContext ctx) { Debug.Log("Test"); _Animator.SetBool("IsMoving", true); }
+    public void movmentStarted(InputAction.CallbackContext ctx) { _Animator.SetBool("IsMoving", true); }
     public void movementStopped(InputAction.CallbackContext ctx) { _Animator.SetBool("IsMoving", false); }
     public void sprintStarted(InputAction.CallbackContext ctx) { _Animator.SetBool("IsSprinting", true); }
     public void sprintStopped(InputAction.CallbackContext ctx) { _Animator.SetBool("IsSprinting", false); }
+
+    public void startedShooting(InputAction.CallbackContext ctx) { _Animator.SetBool("IsShooting", true); }
+    public void stoppedShooting(InputAction.CallbackContext ctx) { _Animator.SetBool("IsShooting", false); }
 
     private void OnDisable()
     {
