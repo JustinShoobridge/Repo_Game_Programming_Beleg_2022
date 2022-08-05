@@ -1,13 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 [CreateAssetMenu]
 public class Enemy_Target_Manager : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> _Treasures;
+    [SerializeField] public List<GameObject> _Treasures;
     [SerializeField] private List<GameObject> _Exits;
- 
+
+    private void Start()
+    {
+        foreach (GameObject treasure in GameObject.FindGameObjectsWithTag("NPC_Stealable")) { _Treasures.Add(treasure); }
+        foreach (GameObject exit in GameObject.FindGameObjectsWithTag("Exit")) { _Exits.Add(exit); }
+    }
+
     public GameObject getClosestTarget(GameObject other, string Type)
     {
         List<GameObject> Targets = new List<GameObject>();
@@ -17,18 +24,22 @@ public class Enemy_Target_Manager : MonoBehaviour
 
         switch (Type)
         {
-            
             case "Treasure":
-                foreach (GameObject target in _Treasures)
+                if(_Treasures.Any())
                 {
-                    if (target.GetComponent<TreasureAttributes>().claimed == false)
+                    foreach (GameObject target in _Treasures)
                     {
-                        Targets.Add(target);
-                    }
-                };
+                        if (target.GetComponent<TreasureAttributes>().claimed == false)
+                        {
+                            Targets.Add(target);
+                        }
+                    };
+                }
                 break;
 
-            case "Exit": Targets = _Exits; break;
+            case "Exit":
+                Targets = _Exits;
+                break;
         }
 
         if(Targets.Count <= 0) { Targets = _Exits; };

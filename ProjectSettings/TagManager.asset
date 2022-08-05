@@ -7,6 +7,7 @@ TagManager:
   - Manager
   - NPC_Stealable
   - Exit
+  - Bullet
   layers:
   - Default
   - TransparentFX
