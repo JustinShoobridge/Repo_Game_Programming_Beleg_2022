@@ -67,7 +67,6 @@ public class ProjectileGunTutorial : MonoBehaviour
     private void Shoot(InputAction.CallbackContext ctx)
     {
         
-
         readyToShoot = false;
 
         //Find the exact hit position using a raycast

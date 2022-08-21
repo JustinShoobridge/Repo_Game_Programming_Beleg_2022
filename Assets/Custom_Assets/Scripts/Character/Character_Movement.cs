@@ -10,7 +10,8 @@ public class Character_Movement : MonoBehaviour
 
 
     [Header("Movement")]
-    [SerializeField] float _movementMultiplier = 50.0f;
+    [SerializeField] float _movementMultiplier = 30.0f;
+    [SerializeField] float _sprintMultiplier = 100.0f;
     [SerializeField] private Input_Manager _InputManager;
     private Rigidbody _Rigidbody = null;
     
@@ -50,13 +51,21 @@ public class Character_Movement : MonoBehaviour
     private Vector3 GetMoveInput()
     {
         return new Vector3(_InputManager._MoveInput.x, 0.0f, _InputManager._MoveInput.y);
+        Debug.Log(_playerMoveInput);
         if (_playerMoveInput != Vector3.zero) _on_Start_Moving?.Invoke(); else _on_Stop_Moving?.Invoke();
 
     }
 
     private void PlayerMove()
     {
-        _playerMoveInput = (new Vector3(_playerMoveInput.x * _movementMultiplier * _Rigidbody.mass, _playerMoveInput.y, _playerMoveInput.z * _movementMultiplier * _Rigidbody.mass));
+        if(_InputManager._Sprint_Is_Pressed == false)
+        {
+            _playerMoveInput = (new Vector3(_playerMoveInput.x * _movementMultiplier * _Rigidbody.mass, _playerMoveInput.y, _playerMoveInput.z * _movementMultiplier * _Rigidbody.mass));
+        }
+        else
+        {
+            _playerMoveInput = (new Vector3(_playerMoveInput.x * _sprintMultiplier * _Rigidbody.mass, _playerMoveInput.y, _playerMoveInput.z * _sprintMultiplier * _Rigidbody.mass));
+        }
     }
 
     private Vector3 GetLookInput()

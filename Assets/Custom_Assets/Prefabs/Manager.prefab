@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8837342961789428773
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8837342961789428775}
+  - component: {fileID: 8837342961789428774}
+  - component: {fileID: 8837342961789428769}
+  - component: {fileID: 8837342961789428771}
+  - component: {fileID: 8837342961789428765}
+  - component: {fileID: 8837342961789428770}
+  m_Layer: 0
+  m_Name: Manager
+  m_TagString: Manager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 8
+  m_IsActive: 1
+--- !u!4 &8837342961789428775
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8837342961789428773}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8837342961789428774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8837342961789428773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5592bbee0459e6b40a2ebfdf6f42acd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Move_Is_Pressed: 0
+--- !u!114 &8837342961789428769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8837342961789428773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb640f6061788a74c807a4b75b6570e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Treasures: []
+  _Exits: []
+--- !u!114 &8837342961789428771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8837342961789428773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5639de856e28e541bd69560c9befa01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Enemy: {fileID: 7340790439350574636, guid: b41c432c44a611d4f94656c8208a2771, type: 3}
+  _SpawnLocations: []
+  _MainGameManager: {fileID: 0}
+  currentEnemiesSpawning: 0
+--- !u!114 &8837342961789428765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8837342961789428773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41b6d29b6bae79242a5358cad12f9db5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Manager: {fileID: 8837342961789428773}
+  _Canvas: {fileID: 0}
+  _TimeDisplay: {fileID: 0}
+  _TreasureCountDisplay: {fileID: 0}
+  _GameOverScreen: {fileID: 0}
+--- !u!114 &8837342961789428770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8837342961789428773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87fe4b622a3a51b418e6caa55012868c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _TimeSurvived: 0
+  _TotalTreasures: 0
+  _CapturedTreasures: 0
+  _IsGameOver: 0
+  _Manager: {fileID: 8837342961789428773}

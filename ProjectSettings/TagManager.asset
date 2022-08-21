@@ -5,9 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Manager
-  - NPC_Stealable
   - Exit
   - Bullet
+  - Treasure
+  - Undefined
+  - Ground
+  - AudioManager
   layers:
   - Default
   - TransparentFX

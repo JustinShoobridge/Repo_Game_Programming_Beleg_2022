@@ -2,16 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-
-[CreateAssetMenu]
+using System;
 public class Enemy_Target_Manager : MonoBehaviour
 {
     [SerializeField] public List<GameObject> _Treasures;
-    [SerializeField] private List<GameObject> _Exits;
+    [SerializeField] public List<GameObject> _Exits;
 
-    private void Start()
+    private void Awake()
     {
-        foreach (GameObject treasure in GameObject.FindGameObjectsWithTag("NPC_Stealable")) { _Treasures.Add(treasure); }
+        foreach (GameObject treasure in GameObject.FindGameObjectsWithTag("Treasure")) { _Treasures.Add(treasure); }
         foreach (GameObject exit in GameObject.FindGameObjectsWithTag("Exit")) { _Exits.Add(exit); }
     }
 
