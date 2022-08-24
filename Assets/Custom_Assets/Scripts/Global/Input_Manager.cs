@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+//Klasse zum reagieren auf Inputs und setzen der Werte für den Character Controller
+
+//Golbale Klasse 
 public class Input_Manager : MonoBehaviour
 {
     public Vector3 _LookInput { get; private set; } = Vector2.zero;
@@ -11,12 +14,14 @@ public class Input_Manager : MonoBehaviour
 
     public bool InvertMouseY { get; private set; } = true;
 
-    public Character_Controls _Character_Controls;
+    
     public bool _Move_Is_Pressed = false;
     public bool _Sprint_Is_Pressed = false;
 
     public event Action _OnMouseDown;
 
+    public Character_Controls _Character_Controls;
+    [SerializeField] public GameObject _Manager;
 
     private void OnEnable()
     {
@@ -33,6 +38,8 @@ public class Input_Manager : MonoBehaviour
         _Character_Controls.NormalMovement.Sprint.canceled += SetSprint;
 
         _Character_Controls.NormalMovement.Mouse_Actions.started += OnMouseDown;
+        _Character_Controls.NormalMovement.RestartGame.started += OnResetGame;
+        _Character_Controls.NormalMovement.QuitGame.started += OnQuitGame;
     }
 
     private void SetSprint(InputAction.CallbackContext ctx)
@@ -54,7 +61,9 @@ public class Input_Manager : MonoBehaviour
     }
 
     private void SetLook(InputAction.CallbackContext ctx) => _LookInput = ctx.ReadValue<Vector2>();
-
+    private void OnMouseDown(InputAction.CallbackContext ctx) { _OnMouseDown?.Invoke(); }
+    private void OnResetGame(InputAction.CallbackContext ctx) => _Manager.GetComponent<MainGameManager>().restartGame();
+    private void OnQuitGame(InputAction.CallbackContext ctx) => _Manager.GetComponent<MainGameManager>().quitGame();
 
     private void OnDisable()
     {
@@ -64,16 +73,15 @@ public class Input_Manager : MonoBehaviour
         _Character_Controls.NormalMovement.Look.performed -= SetLook;
         _Character_Controls.NormalMovement.Look.canceled -= SetLook;
 
+        _Character_Controls.NormalMovement.Sprint.performed -= SetSprint;
+        _Character_Controls.NormalMovement.Sprint.canceled -= SetSprint;
+
+        _Character_Controls.NormalMovement.Mouse_Actions.started -= OnMouseDown;
+        _Character_Controls.NormalMovement.RestartGame.started -= OnResetGame;
+        _Character_Controls.NormalMovement.QuitGame.started -= OnResetGame;
+
         _Character_Controls.NormalMovement.Disable();
     }
-
-    private void OnMouseDown(InputAction.CallbackContext ctx)
-    {
-        _OnMouseDown?.Invoke();
-    }
-
-
-
 
 
 }

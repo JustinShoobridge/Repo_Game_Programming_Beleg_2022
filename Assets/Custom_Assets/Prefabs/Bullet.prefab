@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7887790334853353564}
   - component: {fileID: 7887790334853353565}
   - component: {fileID: 7140152078591054681}
+  - component: {fileID: -7360993434979903959}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Bullet
@@ -215,3 +216,15 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &-7360993434979903959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7040927584036367626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9755de66f3d9e3245a31bb76825db793, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -7,4 +7,6 @@ public enum SoundEffectTypes
     ENEMYHIT,
     ENEMYDEATH,
     GUNSHOT,
+    STOLEN,
+    PICKEDUP,
 }

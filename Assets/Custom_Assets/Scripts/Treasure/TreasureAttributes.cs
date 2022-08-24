@@ -4,11 +4,5 @@ using UnityEngine;
 
 public class TreasureAttributes : MonoBehaviour
 {
-    [SerializeField] public bool claimed;
-
-    private void Start()
-    {
-        
-    }
-
+    public bool claimed;
 }

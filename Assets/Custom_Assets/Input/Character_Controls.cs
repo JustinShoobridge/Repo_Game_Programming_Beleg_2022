@@ -73,9 +73,18 @@ public partial class @Character_Controls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Reload"",
+                    ""name"": ""RestartGame"",
                     ""type"": ""Button"",
-                    ""id"": ""37375c7a-e318-4346-b796-aec80d568eb7"",
+                    ""id"": ""a7ca147d-75a6-4783-88a2-cddfeb51aed3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""QuitGame"",
+                    ""type"": ""Button"",
+                    ""id"": ""b6ac6771-2787-4b52-a362-4bac68a5ef65"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -195,12 +204,23 @@ public partial class @Character_Controls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""1ac8dbde-528b-4f6c-b12f-67ccd82eae3f"",
+                    ""id"": ""62673305-0094-465a-b5f4-cf340b452bdd"",
                     ""path"": ""<Keyboard>/r"",
-                    ""interactions"": ""Tap"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Reload"",
+                    ""action"": ""RestartGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6f2a63c9-7c16-4351-a2b4-844fa921601d"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QuitGame"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -216,7 +236,8 @@ public partial class @Character_Controls : IInputActionCollection2, IDisposable
         m_NormalMovement_Jump1 = m_NormalMovement.FindAction("Jump1", throwIfNotFound: true);
         m_NormalMovement_Mouse_Actions = m_NormalMovement.FindAction("Mouse_Actions", throwIfNotFound: true);
         m_NormalMovement_Sprint = m_NormalMovement.FindAction("Sprint", throwIfNotFound: true);
-        m_NormalMovement_Reload = m_NormalMovement.FindAction("Reload", throwIfNotFound: true);
+        m_NormalMovement_RestartGame = m_NormalMovement.FindAction("RestartGame", throwIfNotFound: true);
+        m_NormalMovement_QuitGame = m_NormalMovement.FindAction("QuitGame", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -281,7 +302,8 @@ public partial class @Character_Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_NormalMovement_Jump1;
     private readonly InputAction m_NormalMovement_Mouse_Actions;
     private readonly InputAction m_NormalMovement_Sprint;
-    private readonly InputAction m_NormalMovement_Reload;
+    private readonly InputAction m_NormalMovement_RestartGame;
+    private readonly InputAction m_NormalMovement_QuitGame;
     public struct NormalMovementActions
     {
         private @Character_Controls m_Wrapper;
@@ -291,7 +313,8 @@ public partial class @Character_Controls : IInputActionCollection2, IDisposable
         public InputAction @Jump1 => m_Wrapper.m_NormalMovement_Jump1;
         public InputAction @Mouse_Actions => m_Wrapper.m_NormalMovement_Mouse_Actions;
         public InputAction @Sprint => m_Wrapper.m_NormalMovement_Sprint;
-        public InputAction @Reload => m_Wrapper.m_NormalMovement_Reload;
+        public InputAction @RestartGame => m_Wrapper.m_NormalMovement_RestartGame;
+        public InputAction @QuitGame => m_Wrapper.m_NormalMovement_QuitGame;
         public InputActionMap Get() { return m_Wrapper.m_NormalMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -316,9 +339,12 @@ public partial class @Character_Controls : IInputActionCollection2, IDisposable
                 @Sprint.started -= m_Wrapper.m_NormalMovementActionsCallbackInterface.OnSprint;
                 @Sprint.performed -= m_Wrapper.m_NormalMovementActionsCallbackInterface.OnSprint;
                 @Sprint.canceled -= m_Wrapper.m_NormalMovementActionsCallbackInterface.OnSprint;
-                @Reload.started -= m_Wrapper.m_NormalMovementActionsCallbackInterface.OnReload;
-                @Reload.performed -= m_Wrapper.m_NormalMovementActionsCallbackInterface.OnReload;
-                @Reload.canceled -= m_Wrapper.m_NormalMovementActionsCallbackInterface.OnReload;
+                @RestartGame.started -= m_Wrapper.m_NormalMovementActionsCallbackInterface.OnRestartGame;
+                @RestartGame.performed -= m_Wrapper.m_NormalMovementActionsCallbackInterface.OnRestartGame;
+                @RestartGame.canceled -= m_Wrapper.m_NormalMovementActionsCallbackInterface.OnRestartGame;
+                @QuitGame.started -= m_Wrapper.m_NormalMovementActionsCallbackInterface.OnQuitGame;
+                @QuitGame.performed -= m_Wrapper.m_NormalMovementActionsCallbackInterface.OnQuitGame;
+                @QuitGame.canceled -= m_Wrapper.m_NormalMovementActionsCallbackInterface.OnQuitGame;
             }
             m_Wrapper.m_NormalMovementActionsCallbackInterface = instance;
             if (instance != null)
@@ -338,9 +364,12 @@ public partial class @Character_Controls : IInputActionCollection2, IDisposable
                 @Sprint.started += instance.OnSprint;
                 @Sprint.performed += instance.OnSprint;
                 @Sprint.canceled += instance.OnSprint;
-                @Reload.started += instance.OnReload;
-                @Reload.performed += instance.OnReload;
-                @Reload.canceled += instance.OnReload;
+                @RestartGame.started += instance.OnRestartGame;
+                @RestartGame.performed += instance.OnRestartGame;
+                @RestartGame.canceled += instance.OnRestartGame;
+                @QuitGame.started += instance.OnQuitGame;
+                @QuitGame.performed += instance.OnQuitGame;
+                @QuitGame.canceled += instance.OnQuitGame;
             }
         }
     }
@@ -352,6 +381,7 @@ public partial class @Character_Controls : IInputActionCollection2, IDisposable
         void OnJump1(InputAction.CallbackContext context);
         void OnMouse_Actions(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
-        void OnReload(InputAction.CallbackContext context);
+        void OnRestartGame(InputAction.CallbackContext context);
+        void OnQuitGame(InputAction.CallbackContext context);
     }
 }

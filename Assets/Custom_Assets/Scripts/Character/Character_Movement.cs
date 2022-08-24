@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Klasse zum Bewegen des Player-Characters und anpassen der Kamera an die Mouse-Bewegungen
+
 public class Character_Movement : MonoBehaviour
 {
     public event Action _on_Start_Moving;
@@ -85,11 +87,4 @@ public class Character_Movement : MonoBehaviour
 
         _CameraFollow.rotation = Quaternion.Euler(_cameraPitch, _CameraFollow.rotation.eulerAngles.y, _CameraFollow.rotation.eulerAngles.z);
     }
-
-    private void Start()
-    {
-        _cameraPitch = 0.0f;
-    }
-
-
 }

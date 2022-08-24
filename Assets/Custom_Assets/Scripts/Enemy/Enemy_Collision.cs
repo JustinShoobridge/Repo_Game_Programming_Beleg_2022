@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Klasse um die von den den gegnern Registrierten Collisions zu verarbeiten und übermitteln
 public class Enemy_Collision : MonoBehaviour
 {
     public event Action _OnTreasureCollision;
@@ -14,6 +15,7 @@ public class Enemy_Collision : MonoBehaviour
 
     public Collision _CollisionObject;
 
+    //Invoken von Events basierend auf Collision Typ
     private IEnumerator OnCollisionEnter(Collision collision)
     {
         _CollisionObject = collision;
@@ -30,19 +32,5 @@ public class Enemy_Collision : MonoBehaviour
                 break;
         }
         return null;
-    }
-
-    void OnTriggerStay(Collider other)
-    {
-        if (other.tag == "Ground")
-        {
-            Debug.Log("Entering Ground");
-            _OnGroundEnter?.Invoke();
-        }
-        else
-        {
-            Debug.Log("Leaving Ground");
-            _OnGroundExit?.Invoke();
-        }
     }
 }

@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Character_Animation_Controller">
+    <Position X="0.75" Y="0.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAJAAAAAKAAAkAAAAAAAIAAIAAAAAAAACAI=</HashCode>
+      <FileName>Assets\Custom_Assets\Scripts\Character\Character_Animation_Controller.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Character_Movement">
+    <Position X="2.75" Y="0.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAgAAiCAAAAQACQQAgABAABAAEQIQKAjAAAAgEI=</HashCode>
+      <FileName>Assets\Custom_Assets\Scripts\Character\Character_Movement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enemy_Collision">
+    <Position X="5.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAACAAAAAAAAQAAAAAAAAAAIAAACAAAAAgQ=</HashCode>
+      <FileName>Assets\Custom_Assets\Scripts\Enemy\Enemy_Collision.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enemy_Controller" BaseTypeListCollapsed="true">
+    <Position X="8.5" Y="2.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAABwAQACAACABAAAAAAAAAAAAAAgCICCAAAQBAAAA=</HashCode>
+      <FileName>Assets\Custom_Assets\Scripts\Enemy\Enemy_Controller.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Enemy_Targeting">
+    <Position X="5.75" Y="3.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAEAAQAAAAAAAAAIAACAAAAAAAAEICAoADAAABkg=</HashCode>
+      <FileName>Assets\Custom_Assets\Scripts\Enemy\Enemy_Targeting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioManager">
+    <Position X="7" Y="11" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAIAEQgAAAAASAAAAAAAAAAAAAAAQAAIAKAAAgAQDAA=</HashCode>
+      <FileName>Assets\Custom_Assets\Scripts\Global\AudioManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enemy_Target_Manager">
+    <Position X="0.5" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAgAAAAAAAAAAAAAAAAAACAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Custom_Assets\Scripts\Global\Enemy_Target_Manager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemySpawning">
+    <Position X="9.25" Y="11.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAEAAAABAAAAAEAAAAJACAAAggggGA=</HashCode>
+      <FileName>Assets\Custom_Assets\Scripts\Global\EnemySpawning.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IncreaseButtonSize">
+    <Position X="4.5" Y="8.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAI=</HashCode>
+      <FileName>Assets\Custom_Assets\Scripts\Global\IncreaseButtonSize.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Input_Manager">
+    <Position X="2.25" Y="10" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>CAAAAQAAAADAAgAQAAMAQAACAAAAEAAIJAQAAAAACAA=</HashCode>
+      <FileName>Assets\Custom_Assets\Scripts\Global\Input_Manager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Main_Menu_Manager">
+    <Position X="4.5" Y="10" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Custom_Assets\Scripts\Global\Main_Menu_Manager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MainGameManager">
+    <Position X="0.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAwQAAICAAAAgAgAAAAAAAAAAAIAAACACAAAAAAIA=</HashCode>
+      <FileName>Assets\Custom_Assets\Scripts\Global\MainGameManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UIManager">
+    <Position X="4.25" Y="11.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAUAAACAAAhAAAAAAAIAIAAIAAAAAACABAAAAAAA=</HashCode>
+      <FileName>Assets\Custom_Assets\Scripts\Global\UIManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bullet">
+    <Position X="8.75" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Assets\Custom_Assets\Scripts\Gun\Bullet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjectileGunTutorial">
+    <Position X="10.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABQBAAAAAAAAQAAIAAAAAAIABAAAAAEAEA=</HashCode>
+      <FileName>Assets\Custom_Assets\Scripts\Gun\ProjectileGunTutorial.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TreasureAttributes">
+    <Position X="0.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Custom_Assets\Scripts\Treasure\TreasureAttributes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="IIsDamagable">
+    <Position X="8" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Custom_Assets\Scripts\Assets\IIsDamagable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="SoundEffectTypes" Collapsed="true">
+    <Position X="7.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAACAAAhAAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Custom_Assets\Scripts\Enums\SoundEffectTypes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

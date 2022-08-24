@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+//Klasse zum abspielen der Hinterundmusik und Sound Effekte
 public class AudioManager : MonoBehaviour
 {
     public AudioClip _MainLoop;
@@ -15,6 +16,7 @@ public class AudioManager : MonoBehaviour
     private AudioSource _AudioSource;
 
     private Input_Manager _InputManager;
+    private MainGameManager _MainGameManager;
     [SerializeField] private GameObject _Manager;
 
     public void OnEnable()
@@ -31,6 +33,7 @@ public class AudioManager : MonoBehaviour
         _AudioSource.PlayOneShot(_MainLoop);
     }
 
+    //Spielt den geforderten Sound Effekt
     public void PlaySoundEffect(SoundEffectTypes type, Vector3 position)
     {
         switch (type)
@@ -50,4 +53,9 @@ public class AudioManager : MonoBehaviour
     }
 
     private void PlayGunShotSound() => PlaySoundEffect(SoundEffectTypes.GUNSHOT, this.transform.position);
+
+    private void OnDisable()
+    {
+        _InputManager._OnMouseDown -= PlayGunShotSound;
+    }
 }

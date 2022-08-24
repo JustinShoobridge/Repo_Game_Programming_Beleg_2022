@@ -51,9 +51,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Reload",
+                    "name": "RestartGame",
                     "type": "Button",
-                    "id": "37375c7a-e318-4346-b796-aec80d568eb7",
+                    "id": "a7ca147d-75a6-4783-88a2-cddfeb51aed3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "QuitGame",
+                    "type": "Button",
+                    "id": "b6ac6771-2787-4b52-a362-4bac68a5ef65",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -173,12 +182,23 @@
                 },
                 {
                     "name": "",
-                    "id": "1ac8dbde-528b-4f6c-b12f-67ccd82eae3f",
+                    "id": "62673305-0094-465a-b5f4-cf340b452bdd",
                     "path": "<Keyboard>/r",
-                    "interactions": "Tap",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Reload",
+                    "action": "RestartGame",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6f2a63c9-7c16-4351-a2b4-844fa921601d",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "QuitGame",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
